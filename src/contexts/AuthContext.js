@@ -7,6 +7,10 @@ export function useAuth() {
     return useContext(AuthContext)
 }
 
+function login(email, password) {
+    return auth.signInWithEmailAndPassword(email, password)
+}
+
 export function AuthProvider({ children }) {
     
     const [currentUser, setCurrentUser] = useState()
@@ -27,7 +31,8 @@ export function AuthProvider({ children }) {
 
     const value = {
         currentUser,
-        signup
+        signup,
+        login
     }
     return (
         <AuthContext.Provider value={value}>
